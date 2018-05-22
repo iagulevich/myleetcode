@@ -13,7 +13,7 @@ public class PalindromeNumber {
             result += d % 10;
             d /= 10;
         }
-        return (result ^ x) == 0;
+        return result == x;
     }
 
     public boolean isPalindrome2(int x) {
