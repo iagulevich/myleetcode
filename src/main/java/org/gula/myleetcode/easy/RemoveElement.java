@@ -9,10 +9,6 @@ public class RemoveElement {
 
     public int removeElement(int[] nums, int val) {
         int n = nums.length;
-        if (n == 1) {
-            return nums[0] == val ? 0 : 1;
-        }
-        int result = 0;
         int count = 0;
         int i = 0;
         while (i < n - count) {
@@ -24,10 +20,9 @@ public class RemoveElement {
                 }
                 count++;
             } else {
-                result++;
                 i++;
             }
         }
-        return result;
+        return i;
     }
 }
