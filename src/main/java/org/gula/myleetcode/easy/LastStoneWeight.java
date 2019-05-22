@@ -3,8 +3,8 @@ package org.gula.myleetcode.easy;
 import java.util.PriorityQueue;
 
 public class LastStoneWeight {
-    public int lastStoneWeight(int[] stones) {
 
+    public int lastStoneWeight(int[] stones) {
         PriorityQueue<Integer> queue = new PriorityQueue<>(stones.length, (x, y) -> y - x);
 
         for (int stone : stones) {
@@ -12,13 +12,8 @@ public class LastStoneWeight {
         }
 
         while (queue.size() > 1) {
-            int last = queue.poll();
-            int preLast = queue.poll();
-            int diff = Math.abs(last - preLast);
-            if (diff > 0) {
-                queue.add(diff);
-            }
+            queue.add(queue.poll() - queue.poll());
         }
-        return (queue.size() == 1) ? queue.peek() : 0;
+        return queue.peek();
     }
 }
