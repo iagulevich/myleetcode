@@ -1,0 +1,39 @@
+package org.gula.myleetcode.medium;
+
+import java.util.Arrays;
+
+public class DailyTemperatures {
+    public int[] dailyTemperatures(int[] T) {
+        int n = T.length;
+        int[] result = new int[n];
+        for (int i = 0; i < n - 1; i++) {
+            result[i] = count(T, n, i);
+        }
+
+        return result;
+    }
+
+    private int count(int[] T, int n, int i) {
+        int r = 0;
+        boolean found = false;
+        for (int j = i + 1; j < n; j++) {
+            if (T[j] > T[i]) {
+                r++;
+                found = true;
+                break;
+            } else {
+                r++;
+            }
+        }
+        return found ? r : 0;
+    }
+
+    public static void main(String[] args) {
+        //        T = [73, 74, 75, 71, 69, 72, 76, 73],
+//            [1, 1, 4, 2, 1, 1, 0, 0].
+        int[] ints = {73, 74, 75, 71, 69, 72, 76, 73};
+        System.out.println("ints:" + Arrays.toString(ints));
+        int[] result = new DailyTemperatures().dailyTemperatures(ints);
+        System.out.println("result:" + Arrays.toString(result));
+    }
+}
