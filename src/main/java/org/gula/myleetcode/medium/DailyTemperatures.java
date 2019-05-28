@@ -1,6 +1,7 @@
 package org.gula.myleetcode.medium;
 
 import java.util.Arrays;
+import java.util.Stack;
 
 public class DailyTemperatures {
     public int[] dailyTemperatures(int[] T) {
@@ -33,7 +34,20 @@ public class DailyTemperatures {
 //            [1, 1, 4, 2, 1, 1, 0, 0].
         int[] ints = {73, 74, 75, 71, 69, 72, 76, 73};
         System.out.println("ints:" + Arrays.toString(ints));
-        int[] result = new DailyTemperatures().dailyTemperatures(ints);
+        int[] result = new DailyTemperatures().dailyTemperatures2(ints);
         System.out.println("result:" + Arrays.toString(result));
+    }
+
+    public int[] dailyTemperatures2(int[] T) {
+        int[] ans = new int[T.length];
+        Stack<Integer> stack = new Stack<>();
+        for (int i = T.length - 1; i >= 0; --i) {
+            while (!stack.isEmpty() && T[i] >= T[stack.peek()]) {
+                stack.pop();
+            }
+            ans[i] = stack.isEmpty() ? 0 : stack.peek() - i;
+            stack.push(i);
+        }
+        return ans;
     }
 }
