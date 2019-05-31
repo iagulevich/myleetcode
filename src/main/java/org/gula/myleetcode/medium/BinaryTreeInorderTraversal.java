@@ -10,8 +10,8 @@ public class BinaryTreeInorderTraversal {
         return result;
     }
 
-    private void add(TreeNode note, List<Integer> list){
-        if(note!=null){
+    private void add(TreeNode note, List<Integer> list) {
+        if (note != null) {
             add(note.left, list);
             list.add(note.val);
             add(note.right, list);
